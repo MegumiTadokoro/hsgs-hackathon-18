@@ -123,8 +123,8 @@ const Grad = {
     const field = state.field;
     const n = field.length;
     const m = field[0].length;
-    const cnti = [];
-    const cntj = [];
+    const cnti = Array(n).fill(0);
+    const cntj = Array(m).fill(0);
     for (let i = 0; i < n; ++i)
       for (let j = 0; j < m; ++j)
         if (field[i][j] === "tent") {
@@ -132,8 +132,11 @@ const Grad = {
           ++cntj[j];
         }
 
+    console.log(cnti);
+    console.log(cntj);
     for (let i = 0; i < n; ++i) if (cnti[i] !== state.cnti[i]) return null;
     for (let j = 0; j < m; ++j) if (cntj[j] !== state.cntj[j]) return null;
+    alert("You won");
     return "won";
   }
 };
