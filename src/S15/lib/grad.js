@@ -7,17 +7,20 @@ function check(x, y) {
 }
 
 const Grad = {
-  default(props = { n: 6, m: 6 }) {
+  default(props = { m: 6, n: 6 }) {
+    // n cot, m hang
     const m = props.m;
     const n = props.n;
+    const cnti = [];
+    const cntj = [];
+
+    const field = Array(n).fill(Array(m).fill(null));
+    const gentent = Array(n).fill(Array(m).fill(0));
 
     const dx = [-1, 0, 0, 1];
     const dy = [0, -1, 1, 0];
     const dx2 = [-1, -1, -1, 0, 0, 1, 1, 1];
     const dy2 = [-1, 0, 1, -1, 1, -1, 0, 1];
-
-    const field = Array(m).fill(Array(n).fill(null));
-    const gentent = Array(m).fill(Array(n).fill(0));
     for (let i = 0; i < n; ++i)
       for (let j = 0; j < m; ++j) {
         const treehere = Math.floor(Math.random() * 4);
@@ -49,8 +52,6 @@ const Grad = {
           }
         }
       }
-    const cnti = [];
-    const cntj = [];
     for (let i = 0; i < n; ++i)
       for (let j = 0; j < m; ++j) {
         cnti[i] += gentent[i][j];
@@ -60,8 +61,16 @@ const Grad = {
   },
   actions: {
     async place(state, { x, y }) {
-      let field = state.field;
+      const field = state.field;
+      const cnti = state.cnti;
+      const cntj = state.cntj;
+
       if (field[x][y] === "tree") throw new Error("Tree is here!");
+
+      if (field[x][y] === "tent") {
+        field[x][y] = null;
+        return { field, cnti, cntj };
+      }
 
       // Check validtree
       let validtree = false;
@@ -78,14 +87,13 @@ const Grad = {
           tentaround = true;
       if (!tentaround) throw new Error("Nearby tent found! Move is invalid.");
       field[x][y] = "tent";
-      return { field };
+      return { field, cnti, cntj };
     }
   },
   isValid(state) {
     const piles = state.piles;
     if (!(piles instanceof Array)) return false;
-    for (const pile of piles)
-      if (!(pile instanceof Array)) return false;
+    for (const pile of piles) if (!(pile instanceof Array)) return false;
     return true;
   },
   isEnding(state) {
