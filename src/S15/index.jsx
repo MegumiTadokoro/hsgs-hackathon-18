@@ -5,8 +5,11 @@ import "./index.css";
 
 function Square(props) {
   return (
-    <button className="square" onClick={props.onClick}>
-      {props.value}
+    <button
+      className={"square" + (props.value === null ? "" : "-" + props.value)}
+      onClick={props.onClick}
+    >
+      {/* {props.value} */}
     </button>
   );
 }
@@ -42,6 +45,7 @@ class Board extends React.Component {
     }
     subarray.push(<div className="board-side" />);
     array.push(subarray);
+
     return (
       <div>
         <div>{array}</div>
