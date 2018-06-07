@@ -6,13 +6,14 @@ import "./index.css";
 class Row extends React.Component {
   render() {
     const array = [];
+    let j = this.props.M;
     for (let i = 0; i < this.props.N; ++i)
       array.push(
         <button
           onClick={() =>
             this.props.place({
               x: i,
-              y: this.props.M
+              y: j
             })
           }
           className={this.props.field[i][j]}

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 
-function check(x, y) {
+function check(x, y, m, n) {
   if (x >= 0 && x < n && y >= 0 && y < m) return true;
   return false;
 }
@@ -11,8 +11,8 @@ const Grad = {
     // n cot, m hang
     const m = props.m;
     const n = props.n;
-    const cnti = [];
-    const cntj = [];
+    let cnti = [];
+    let cntj = [];
 
     const field = Array(n).fill(Array(m).fill(null));
     const gentent = Array(n).fill(Array(m).fill(0));
@@ -34,7 +34,7 @@ const Grad = {
             const findtree = false;
             for (let k = 0; k < 4; ++k)
               if (
-                check(i + dx[k], j + dy[k]) &&
+                check(i + dx[k], j + dy[k], m, n) &&
                 field[i + dx[k]][j + dy[k]] === "tree"
               )
                 findtree = true;
@@ -43,7 +43,7 @@ const Grad = {
               let alreadytent = false;
               for (let k = 0; k < 8; ++k)
                 if (
-                  check(i + dx2[k], j + dy2[k]) &&
+                  check(i + dx2[k], j + dy2[k], m, n) &&
                   gentent[i + dx2[k]][j + dy2[k]] === 1
                 )
                   alreadytent = true;
@@ -62,6 +62,8 @@ const Grad = {
   actions: {
     async place(state, { x, y }) {
       const field = state.field;
+      const n = field.length;
+      const m = field[0].length;
       const cnti = state.cnti;
       const cntj = state.cntj;
 
@@ -75,7 +77,10 @@ const Grad = {
       // Check validtree
       let validtree = false;
       for (let k = 0; k < 4; ++k)
-        if (check(x + dx[k] + dy[k]) && field[x + dx[k]][y + dy[k]] === "tree")
+        if (
+          check(x + dx[k] + dy[k], m, n) &&
+          field[x + dx[k]][y + dy[k]] === "tree"
+        )
           validtree = true;
       if (!validtree)
         throw new Error("No adjancent trees found! Move is invalid.");
@@ -83,7 +88,10 @@ const Grad = {
       // Check tentaround
       let tentaround = false;
       for (let k = 0; k < 8; ++k)
-        if (check(i + dx2[k], j + dy2[k]) && gentent[i + dx2[k]][j + dy2[k]])
+        if (
+          check(x + dx2[k] + dy2[k], m, n) &&
+          field[x + dx2[k]][y + dy2[k]] === "tent"
+        )
           tentaround = true;
       if (!tentaround) throw new Error("Nearby tent found! Move is invalid.");
       field[x][y] = "tent";
@@ -97,13 +105,18 @@ const Grad = {
     return true;
   },
   isEnding(state) {
+    const field = state.field;
+    const n = field.length;
+    const m = field[0].length;
     const cnti = [];
     const cntj = [];
     for (let i = 0; i < n; ++i)
-      for (let j = 0; j < m; ++j) {
-        cnti[i] += gentent[i][j];
-        cntj[j] += gentent[i][j];
-      }
+      for (let j = 0; j < m; ++j)
+        if (field[i][j] === "tent") {
+          ++cnti[i];
+          ++cntj[j];
+        }
+
     for (let i = 0; i < n; ++i) if (cnti[i] !== state.cnti[i]) return null;
     for (let j = 0; j < m; ++j) if (cntj[j] !== state.cntj[j]) return null;
     return "won";
