@@ -12,7 +12,6 @@
 .lastCol {
   border: 1px solid transparent;
   border-left: 1px solid black;
-  text-decoration: underline;
 }
 
 .lastRow {
@@ -54,7 +53,11 @@ input:focus {
 .submit-form {
   font-family: "Arial";
 }
+.submit-form.tab {
+  border: 1px solid transparent;
+}
 
 span {
   padding: 15px;
+  font-size: 15px;
 }

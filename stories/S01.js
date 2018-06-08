@@ -7,7 +7,7 @@ import ReactGame from "react-gameboard/lib/component";
 const S01 = ReactGame(Game);
 
 storiesOf("S01", module)
-  .add("something", () => (
+  .add("Medium Mode", () => (
     <S01>
        <Board/> 
     </S01>

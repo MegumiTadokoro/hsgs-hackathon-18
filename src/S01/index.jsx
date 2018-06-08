@@ -66,49 +66,37 @@ class Board extends React.Component {
       <div>
          <table>
           <tbody>
-              <pre>             Current Board             </pre>
-              <div>
-                <Column col={this.props.state.board2[0]} type={0}/>  
-                <Column col={this.props.state.board2[1]} type={0}/>  
-                <Column col={this.props.state.board2[2]} type={0}/> 
-                <Column col={this.props.state.board2[3]} type={0}/>  
-                <Column col={this.props.state.board2[4]} type={0}/>
-                <Column col={this.props.state.board2[5]} type={1}/>
-              </div>
-
-              <tr><pre>                     </pre></tr>
-
-              <pre>             Original Board            </pre>
-              <div>
-                <Column col={this.props.state.board[0]}/>  
-                <Column col={this.props.state.board[1]}/>  
-                <Column col={this.props.state.board[2]}/> 
-                <Column col={this.props.state.board[3]}/>  
-                <Column col={this.props.state.board[4]}/>
-                <Column col={this.props.state.board[5]}/>
-              </div>
-
+            <div>
+              <Column col={this.props.state.board2[0]} type={0}/>  
+              <Column col={this.props.state.board2[1]} type={0}/>  
+              <Column col={this.props.state.board2[2]} type={0}/> 
+              <Column col={this.props.state.board2[3]} type={0}/>  
+              <Column col={this.props.state.board2[4]} type={0}/>
+              <Column col={this.props.state.board2[5]} type={1}/>
+            </div>
+          
+            <tr><pre>             </pre></tr>
+            <div className="submit-form">
+              <tr>
+                <td className="submit-form tab"><span>
+                  A = <input name="A" type="text" maxlength="1" value={this.state.A} onChange={this.handleChange}/>
+                </span></td>
+                <td className="submit-form tab"><span>
+                  B = <input name="B" type="text" maxlength="1" value={this.state.B} onChange={this.handleChange}/>
+                </span></td>
+                <td className="submit-form tab"><span>
+                  C = <input name="C" type="text" maxlength="1" value={this.state.C} onChange={this.handleChange}/>
+                </span></td>
+                <td className="submit-form tab"><span>
+                  D = <input name="D" type="text" maxlength="1" value={this.state.D} onChange={this.handleChange}/>
+                </span></td>
+                <td className="submit-form tab"><span>
+                  E = <input name="E" type="text" maxlength="1" value={this.state.E} onChange={this.handleChange}/>
+                </span></td>
+              </tr>
+            </div>
           </tbody>
         </table>
-        <br/>
-          <div className="submit-form">
-            <span>
-              A = <input name="A" type="text" maxlength="1" value={this.state.A} onChange={this.handleChange}/>
-            </span>
-            <span>
-              B = <input name="B" type="text" maxlength="1" value={this.state.B} onChange={this.handleChange}/>
-            </span>
-            <span>
-              C = <input name="C" type="text" maxlength="1" value={this.state.C} onChange={this.handleChange}/>
-            </span>
-            <span>
-              D = <input name="D" type="text" maxlength="1" value={this.state.D} onChange={this.handleChange}/>
-            </span>
-            <span>
-              E = <input name="E" type="text" maxlength="1" value={this.state.E} onChange={this.handleChange}/>
-            </span>
-          </div>
-          <br/>
       </div>
     )
   }

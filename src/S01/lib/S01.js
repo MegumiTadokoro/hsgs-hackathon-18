@@ -24,8 +24,6 @@ const S01 = {
         }
       }
 
-      // alert(visit)
-
       let fail = 0;
       for (let i = 0; i < 5; ++i) {
         if (visit[i] == 0) fail = 1
