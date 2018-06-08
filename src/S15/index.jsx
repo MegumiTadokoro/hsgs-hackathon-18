@@ -48,11 +48,14 @@ class Board extends React.Component {
     subarray.push(<div className="board-side" />);
     array.push(subarray);
 
+    let error = [];
+    if (err !== null) error.push(JSON.stringify(err));
+
     return (
       <div>
         <div>{array}</div>
-        <pre>{JSON.stringify(this.props)}</pre>
-        <pre>{JSON.stringify(err)}</pre>
+        {/* <pre>{JSON.stringify(this.props)}</pre> */}
+        <pre style={{ color: "red" }}>{error}</pre>
       </div>
     );
   }
