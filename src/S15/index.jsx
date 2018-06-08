@@ -43,7 +43,11 @@ class Board extends React.Component {
         <div className="board-side">{this.props.state.cnti[i]}</div>
       );
     }
-    subarray.push(<button className="board-side" onClick={this.props.reset}>Reset</button>);
+    subarray.push(
+      <button className="board-side" onClick={this.props.reset}>
+        Reset
+      </button>
+    );
     array.push(subarray);
 
     let error = [];
@@ -52,8 +56,13 @@ class Board extends React.Component {
     return (
       <div>
         <div>{array}</div>
-        {/* <pre>{JSON.stringify(this.props)}</pre> */}
-        <pre style={{ color: "red" }}>{error}</pre>
+        <br />
+        <br />
+        <br />
+        <h1 style={{ color: "red" }}>{error}</h1>
+        <h1 style={{ color: "green" }}>
+          {this.props.isEnding === "won" ? "YOU WON" : ""}
+        </h1>
       </div>
     );
   }

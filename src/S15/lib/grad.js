@@ -158,7 +158,6 @@ const Grad = {
     // console.log(cntj);
     for (let i = 0; i < n; ++i) if (cnti[i] !== state.cnti[i]) return null;
     for (let j = 0; j < m; ++j) if (cntj[j] !== state.cntj[j]) return null;
-    alert("You won");
     return "won";
   }
 };
