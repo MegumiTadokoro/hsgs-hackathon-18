@@ -27,7 +27,7 @@ const Grad = {
       let subarray = [];
       for (let j = 0; j < m; ++j) {
         const treehere = Math.floor(Math.random() * 4);
-        console.log(treehere);
+        // console.log(treehere);
         if (treehere === 0) subarray.push("tree");
         else subarray.push(null);
       }
@@ -120,6 +120,19 @@ const Grad = {
       if (tentaround) throw new Error("Nearby tent found! Move is invalid.");
       field[x][y] = "tent";
       return { field, cnti, cntj };
+    },
+    async reset(state) {
+      let field = state.field;
+      const n = field.length;
+      const m = field[0].length;
+      const cnti = state.cnti;
+      const cntj = state.cntj;
+
+      for (let i = 0; i < n; ++i)
+        for (let j = 0; j < m; ++j)
+          if (field[i][j] === "tent") field[i][j] = null;
+      // console.table(field);
+      return { field, cnti, cntj };
     }
   },
   isValid(state) {
@@ -141,8 +154,8 @@ const Grad = {
           ++cntj[j];
         }
 
-    console.log(cnti);
-    console.log(cntj);
+    // console.log(cnti);
+    // console.log(cntj);
     for (let i = 0; i < n; ++i) if (cnti[i] !== state.cnti[i]) return null;
     for (let j = 0; j < m; ++j) if (cntj[j] !== state.cntj[j]) return null;
     alert("You won");

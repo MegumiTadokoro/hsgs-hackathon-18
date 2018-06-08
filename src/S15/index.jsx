@@ -9,9 +9,7 @@ function Square(props) {
       className={"square" + (props.value === null ? "" : "-" + props.value)}
       onClick={props.onClick}
       disabled={props.isOver}
-    >
-      {/* {props.value} */}
-    </button>
+    />
   );
 }
 
@@ -45,7 +43,7 @@ class Board extends React.Component {
         <div className="board-side">{this.props.state.cnti[i]}</div>
       );
     }
-    subarray.push(<div className="board-side" />);
+    subarray.push(<button className="board-side" onClick={this.props.reset}>Reset</button>);
     array.push(subarray);
 
     let error = [];
