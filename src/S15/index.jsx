@@ -8,6 +8,7 @@ function Square(props) {
     <button
       className={"square" + (props.value === null ? "" : "-" + props.value)}
       onClick={props.onClick}
+      disabled={props.isOver}
     >
       {/* {props.value} */}
     </button>
@@ -29,6 +30,7 @@ class Board extends React.Component {
         subarray.push(
           <Square
             value={this.props.state.field[i][j]}
+            isOver={this.props.isEnding}
             onClick={() => this.props.place({ x: i, y: j })}
           />
         );
