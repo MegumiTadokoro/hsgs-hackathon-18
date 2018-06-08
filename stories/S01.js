@@ -13,12 +13,12 @@ storiesOf("S01", module)
     </S01>
   ))
   .add("Medium Mode", () => (
-    <S01 N={6}>
+    <S01 N={5}>
         <Board/>  
     </S01>
   ))
   .add("Hard Mode", () => (
-    <S01 N={8}>
+    <S01 N={7}>
         <Board/>  
     </S01>
   ))

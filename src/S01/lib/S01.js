@@ -42,7 +42,7 @@ const S01 = {
 
       for (let i = 0; i < N; ++i) {
         tmpValue[i] = Math.floor(Math.random() * 10);
-        // tmpValue[i] = 1;
+        //tmpValue[i] = 1;
       }
 
       for (let i = 0; i < N; ++i) {
@@ -100,9 +100,8 @@ const S01 = {
     for (let i = 0; i < N; ++i) {
       if (sumCol[i] != state.board[i][N]) return null;
     }
-
-    alert('Wow! You have potential! :)');
-    return 'AC';
+    
+    return "won";
   }
 }
 

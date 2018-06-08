@@ -64,3 +64,9 @@ span {
   padding: 15px;
   font-size: 15px;
 }
+
+.result {
+  color: green;
+  font-size: 30px;
+  font-family: "Verdana"
+}
