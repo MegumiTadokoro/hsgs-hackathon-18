@@ -3,10 +3,15 @@ import { storiesOf } from "@storybook/react";
 import Board from "../src/S15/index.jsx";
 import Game from "../src/S15/lib/grad.js";
 import ReactGame from "react-gameboard/lib/component";
+import { withKnobs, number } from "@storybook/addon-knobs";
 
 const Grad = ReactGame(Game);
 
-storiesOf("Grad", module)
+const gradStory = storiesOf("Grad", module);
+
+gradStory.addDecorator(withKnobs);
+
+gradStory
   .add("Simple Mode", () => (
     <Grad n={4} m={4}>
       <Board />
@@ -23,10 +28,8 @@ storiesOf("Grad", module)
     </Grad>
   ))
   .add("Custom Mode", () => {
-    const input_n = parseInt(prompt("Please enter the number of rows: "));
-    const input_m = parseInt(prompt("Please enter the number of columns: "));
-    const n = isNaN(input_n) ? 6 : input_n > 0 ? input_n : 6;
-    const m = isNaN(input_m) ? 6 : input_m > 0 ? input_m : 6;
+    const n = number("Number of rows", 6);
+    const m = number("Number of columns", 6);
     return (
       <Grad n={n} m={m}>
         <Board />
