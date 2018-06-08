@@ -1,5 +1,5 @@
 hekoru:
   stage: deploy
   script:
-  - gem install dbl
+  - gem install dpl
   - dpl --provider=heroku --app=hsgs-hackathon-18 --api-key=$HEROKU_API_KEY
