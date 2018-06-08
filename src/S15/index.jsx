@@ -27,24 +27,33 @@ class Board extends React.Component {
       for (let i = 0; i < N; ++i)
         subarray.push(
           <Square
+            key={"data" + i + "-" + j}
             value={this.props.state.field[i][j]}
             isOver={this.props.isEnding}
             onClick={() => this.props.place({ x: i, y: j })}
           />
         );
       subarray.push(
-        <div className="board-side">{this.props.state.cntj[j]}</div>
+        <div className="board-side" key={"sidej" + j}>
+          {this.props.state.cntj[j]}
+        </div>
       );
-      array.push(<div className="board-row">{subarray}</div>);
+      array.push(
+        <div className="board-row" key={"line" + j}>
+          {subarray}
+        </div>
+      );
     }
     let subarray = [];
     for (let i = 0; i < N; ++i) {
       subarray.push(
-        <div className="board-side">{this.props.state.cnti[i]}</div>
+        <div className="board-side" key={"sidei" + i}>
+          {this.props.state.cnti[i]}
+        </div>
       );
     }
     subarray.push(
-      <button className="board-side" onClick={this.props.reset}>
+      <button className="board-side" key="resetBtn" onClick={this.props.reset}>
         Reset
       </button>
     );
