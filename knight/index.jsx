@@ -3,20 +3,6 @@ import Knight from "./lib/knight.js";
 
 import "./index.css";
 
-// class Row extends React.Component {
-	// render() 
-	// {
-		// const arr = [];
-		// const K = this.props.R;
-		// for (let id = 0; id < this.props.M; id++) 
-		// {
-			// arr.push(<button onClick={() => this.props.move({ x: {K} , y: {id} } )}></button>);
-		// }
-		//console.log(arr);
-		// return {arr};
-	// }
-// }
-
 class Chess extends React.Component 
 {
 	render() 
@@ -34,32 +20,33 @@ class Chess extends React.Component
 				switch(this.props.state.Board[i][j])
 				{
 					case 0:
-						arr.push(<td><button0 onClick={() => this.props.move({ x: i , y: j } )}>X</button0></td>);
+						arr.push(<button class = "button button0" onClick={() => this.props.move({ x: i , y: j } )}>&#9822;</button>);
 						break;
 					case 1:
-						arr.push(<td><button1 onClick={() => this.props.move({ x: i , y: j } )}>O</button1></td>);
+						arr.push(<button class = "button button1" onClick={() => this.props.move({ x: i , y: j } )}>&#9816;</button>);
 						break;
 					case 2:
-						arr.push(<td><button2 onClick={() => this.props.move({ x: i , y: j } )}>X</button2></td>);
+						arr.push(<button class = "button button2" onClick={() => this.props.move({ x: i , y: j } )}>&#9822;</button>);
 						break;
 					case 3:
-						arr.push(<td><button3 onClick={() => this.props.move({ x: i , y: j } )}>X</button3></td>);
+						arr.push(<button class = "button button3" onClick={() => this.props.move({ x: i , y: j } )}>&#9822;</button>);
 						break;
 					default :
 						;
 				}
 			}
 			moves.push(
-			<tr>
+			<div>
 				{arr}
-			</tr>);
+			</div>);
 		}
 		const err = this.props.error ? this.props.error.message : null;
 		return (
 		<div>
-			<table>
-				{moves}
-			</table>
+			{moves}
+			<br></br>
+			<br></br>
+			<button class = "restartbutt" onClick={() => this.props.reset()}>Click for free VBucks</button>
 			<pre>{JSON.stringify(this.props)}</pre>
 			<pre>{JSON.stringify(err)}</pre>
 		</div>

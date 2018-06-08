@@ -1,21 +1,37 @@
-button0 {
+.button
+{
+	background-color: #ffffff;
+    border: none;
+    color: black;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    cursor: pointer;
 }
 
-table {
-    width: 50px;
+.button0 {}
+.button1 {background-color: #ffa500;}
+.button2 {background-color: #00e600;}
+.button3 {background-color: #808080;}
+
+.button0:hover 
+{
+	background-color: #ff4d4d;
 }
 
-button1 {
-	background-color : #ff0000;
+.button1:hover
+{
+	background-color: #ff4d4d;
 }
 
-button2 {
+.button2:hover
+{
+	background-color: #00ff00;
 }
 
-button2:hover {
-	background-color : #00ff00;
-}
-
-button3 {
-	background-color : #000066;
+.button3:hover
+{
+	background-color: #999999;
 }

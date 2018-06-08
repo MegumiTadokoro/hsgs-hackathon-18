@@ -11,17 +11,21 @@ const Knight =
 	default(props = { row: 3, col: 4 }) 
 	{
 		const Board = new Array();
+		const x = Math.floor((Math.random() * props.row));
+		const y = Math.floor((Math.random() * props.col));
 		for (let i = 0 ; i < props.row; i++) 
 		{
 			Board[i] = new Array();
 			for(let j = 0; j < props.col; j++)
 			{
-				Board[i][j] = 0;
+				if(i === x && j === y) Board[i][j] = 1;
+				else if((Math.abs(i - x) === 1 && Math.abs(j - y) === 2) || (Math.abs(i - x) === 2 && Math.abs(j - y) === 1))
+				{
+					Board[i][j] = 2;
+				}
+				else Board[i][j] = 0;
 			}
 		}
-		Board[1][0]=1;
-		Board[0][2]=2;
-		Board[2][2]=2;
 		return { Board };
 	},
 
@@ -105,6 +109,25 @@ const Knight =
 						break;
 					default :
 						throw new Error("Unknown Error has occurred, sir!");
+				}
+			}
+			return { Board };
+		},
+		async reset(state) 
+		{
+			const Board = state.Board.map(v => v.slice());
+			const x = Math.floor((Math.random() * Board.length));
+			const y = Math.floor((Math.random() * Board[0].length));
+			for (let i = 0 ; i < Board.length; i++) 
+			{
+				for(let j = 0; j < Board[i].length; j++)
+				{
+					if(i === x && j === y) Board[i][j] = 1;
+					else if((Math.abs(i - x) === 1 && Math.abs(j - y) === 2) || (Math.abs(i - x) === 2 && Math.abs(j - y) === 1))
+					{
+						Board[i][j] = 2;
+					}
+					else Board[i][j] = 0;
 				}
 			}
 			return { Board };
