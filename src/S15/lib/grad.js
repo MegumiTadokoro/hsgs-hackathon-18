@@ -9,64 +9,73 @@ function check(x, y, m, n) {
 const Grad = {
   default(props = { m: 6, n: 6 }) {
     // n cot, m hang
-    // const m = props.m;
-    // const n = props.n;
-    // let cnti = [];
-    // let cntj = [];
+    const m = props.m;
+    const n = props.n;
+    let cnti = Array(n).fill(0);
+    let cntj = Array(m).fill(0);
 
-    // let field = Array(n).fill(Array(m).fill(null));
-    // let gentent = Array(n).fill(Array(m).fill(0));
+    let field = [];
+    let gentent = [...Array(n)].map(e => Array(m).fill(0));
+    // for (let i = 0; i < n; ++i) for (let j = 0; j < m; ++j) gentent[i][j] = 0;
 
-    // const dx = [-1, 0, 0, 1];
-    // const dy = [0, -1, 1, 0];
-    // const dx2 = [-1, -1, -1, 0, 0, 1, 1, 1];
-    // const dy2 = [-1, 0, 1, -1, 1, -1, 0, 1];
-    // for (let i = 0; i < n; ++i)
-    //   for (let j = 0; j < m; ++j) {
-    //     const treehere = Math.floor(Math.random() * 4);
-    //     if (treehere < 1) field[i][j] = "tree";
-    //   }
-    // for (let i = 0; i < n; ++i)
-    //   for (let j = 0; j < m; ++j) {
-    //     if (field[i][j] !== "tree") {
-    //       const tenthere = Math.floor(Math.random() * 5);
-    //       if (tenthere < 4) {
-    //         const findtree = false;
-    //         for (let k = 0; k < 4; ++k)
-    //           if (
-    //             check(i + dx[k], j + dy[k], m, n) &&
-    //             field[i + dx[k]][j + dy[k]] === "tree"
-    //           )
-    //             findtree = true;
+    const dx = [-1, 0, 0, 1];
+    const dy = [0, -1, 1, 0];
+    const dx2 = [-1, -1, -1, 0, 0, 1, 1, 1];
+    const dy2 = [-1, 0, 1, -1, 1, -1, 0, 1];
 
-    //         if (findtree) {
-    //           let alreadytent = false;
-    //           for (let k = 0; k < 8; ++k)
-    //             if (
-    //               check(i + dx2[k], j + dy2[k], m, n) &&
-    //               gentent[i + dx2[k]][j + dy2[k]] === 1
-    //             )
-    //               alreadytent = true;
-    //           if (!alreadytent) gentent[i][j] = 1;
-    //         }
-    //       }
-    //     }
-    //   }
-    // for (let i = 0; i < n; ++i)
-    //   for (let j = 0; j < m; ++j) {
-    //     cnti[i] += gentent[i][j];
-    //     cntj[j] += gentent[i][j];
-    //   }
-    const field = [
-      [null, null, null, null, "tree", null],
-      [null, null, "tree", null, null, "tree"],
-      ["tree", null, null, null, null, null],
-      [null, null, "tree", null, "tree", null],
-      [null, null, null, null, null, null],
-      [null, null, null, "tree", null, "tree"]
-    ];
-    const cnti = [2, 1, 1, 2, 1, 1];
-    const cntj = [1, 1, 2, 1, 0, 3];
+    for (let i = 0; i < n; ++i) {
+      let subarray = [];
+      for (let j = 0; j < m; ++j) {
+        const treehere = Math.floor(Math.random() * 4);
+        console.log(treehere);
+        if (treehere === 0) subarray.push("tree");
+        else subarray.push(null);
+      }
+      field.push(subarray);
+    }
+    for (let i = 0; i < n; ++i)
+      for (let j = 0; j < m; ++j) {
+        if (field[i][j] === null) {
+          const tenthere = Math.floor(Math.random() * 5);
+          if (tenthere !== 0) {
+            let findtree = false;
+            for (let iter = 0; iter < 4; ++iter)
+              if (
+                check(i + dx[iter], j + dy[iter], m, n) &&
+                field[i + dx[iter]][j + dy[iter]] === "tree"
+              )
+                findtree = true;
+
+            if (findtree) {
+              let alreadytent = false;
+              for (let k = 0; k < 8; ++k)
+                if (
+                  check(i + dx2[k], j + dy2[k], m, n) &&
+                  gentent[i + dx2[k]][j + dy2[k]] === 1
+                )
+                  alreadytent = true;
+              if (!alreadytent) gentent[i][j] = 1;
+            }
+          }
+        }
+      }
+    for (let i = 0; i < n; ++i)
+      for (let j = 0; j < m; ++j) {
+        cnti[i] += gentent[i][j];
+        cntj[j] += gentent[i][j];
+      }
+
+    // Demo
+    // const field = [
+    //   [null, null, null, null, "tree", null],
+    //   [null, null, "tree", null, null, "tree"],
+    //   ["tree", null, null, null, null, null],
+    //   [null, null, "tree", null, "tree", null],
+    //   [null, null, null, null, null, null],
+    //   [null, null, null, "tree", null, "tree"]
+    // ];
+    // const cnti = [2, 1, 1, 2, 1, 1];
+    // const cntj = [1, 1, 2, 1, 0, 3];
     return { field, cnti, cntj };
   },
   actions: {
