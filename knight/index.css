@@ -3,11 +3,11 @@
 	background-color: #ffffff;
     border: none;
     color: black;
-    padding: 10px 10px;
+    padding: 5px 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 30px;
+    font-size: 25px;
     cursor: pointer;
 }
 
@@ -34,4 +34,12 @@
 .button3:hover
 {
 	background-color: #999999;
+}
+
+.restartbutt
+{
+	font-size: 15px;
+	color: red;
+	background-color: yellow;
+	cursor: pointer;
 }

@@ -40,14 +40,16 @@ class Chess extends React.Component
 				{arr}
 			</div>);
 		}
-		const err = this.props.error ? this.props.error.message : null;
+		const err = this.props.error ? this.props.error.message : "Next step, please!";
 		return (
 		<div>
 			{moves}
 			<br></br>
 			<br></br>
-			<button class = "restartbutt" onClick={() => this.props.reset()}>Click for free VBucks</button>
+			<button class = "restartbutt" onClick={() => this.props.reset()}>Restart your game</button>
+				{/*
 			<pre>{JSON.stringify(this.props)}</pre>
+				*/}
 			<pre>{JSON.stringify(err)}</pre>
 		</div>
 		);
