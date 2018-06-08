@@ -1,0 +1,21 @@
+button0 {
+}
+
+table {
+    width: 50px;
+}
+
+button1 {
+	background-color : #ff0000;
+}
+
+button2 {
+}
+
+button2:hover {
+	background-color : #00ff00;
+}
+
+button3 {
+	background-color : #000066;
+}
