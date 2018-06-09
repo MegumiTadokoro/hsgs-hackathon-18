@@ -1,7 +1,7 @@
 import React from "react";
 import Knight from "./lib/knight.js";
 
-import "./index.css";
+import "./index.less";
 
 class Chess extends React.Component {
   render() {
@@ -17,7 +17,7 @@ class Chess extends React.Component {
           case 0:
             arr.push(
               <button
-                class="button button0"
+                className="button button0"
                 onClick={() => this.props.move({ x: i, y: j })}
               >
                 &#9822;
@@ -27,7 +27,7 @@ class Chess extends React.Component {
           case 1:
             arr.push(
               <button
-                class="button button1"
+                className="button button1"
                 onClick={() => this.props.move({ x: i, y: j })}
               >
                 &#9816;
@@ -37,7 +37,7 @@ class Chess extends React.Component {
           case 2:
             arr.push(
               <button
-                class="button button2"
+                className="button button2"
                 onClick={() => this.props.move({ x: i, y: j })}
               >
                 &#9822;
@@ -47,7 +47,7 @@ class Chess extends React.Component {
           case 3:
             arr.push(
               <button
-                class="button button3"
+                className="button button3"
                 onClick={() => this.props.move({ x: i, y: j })}
               >
                 &#9822;
@@ -69,14 +69,14 @@ class Chess extends React.Component {
           : "No moves left for ya horse, sir!";
     }
     return (
-      <div>
+      <div class="s17">
         {moves}
         <br />
         <br />
-        <button class="undobutt" onClick={() => this.props.undo()}>
+        <button className="undobutt" onClick={() => this.props.undo()}>
           Undo
         </button>
-        <button class="restartbutt" onClick={() => this.props.reset()}>
+        <button className="restartbutt" onClick={() => this.props.reset()}>
           Restart your game
         </button>
         {/*

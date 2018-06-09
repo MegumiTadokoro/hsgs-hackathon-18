@@ -1,7 +1,7 @@
 import React from "react";
 import TowerOfHanoi from "./lib/tower_of_hanoi.js";
 
-import "./index.css";
+import "./index.less";
 
 class Row extends React.Component {
   render() {
@@ -40,7 +40,7 @@ class Board extends React.Component {
       }
     const err = this.props.error ? this.props.error.message : null;
     return (
-      <div>
+      <div className="example">
         <table style={{ border: "1px solid black" }}>
           <tbody>
             <Row N={N} pile={this.props.state.piles[0]} />
