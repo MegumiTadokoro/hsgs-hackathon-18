@@ -1,0 +1,36 @@
+.square {
+    background: #fff;
+    border: 1px solid black;
+    float: left;
+    font: 25px "Century Gothic", Futura, sans-serif;
+    line-height: 20px;
+    height: 40px;
+    width: 40px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    outline: none;
+}
+
+button:disabled,
+button[disabled]{
+  color: black;
+}
+
+.blocked {
+    background: black;
+}
+
+.note{
+    font: 25px "Century Gothic", Futura, sans-serif;
+    line-height: 0px;
+}
+
+.mid1{
+    margin: 20px;
+}
+
+.mid2{
+    margin: 40px;
+}
