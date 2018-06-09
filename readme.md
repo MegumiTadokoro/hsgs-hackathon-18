@@ -8,11 +8,11 @@
 
 1.  Học [React](https://reactjs.org)
 2.  Học [react-gameboard](https://gitlab.com/deltarena/react-gameboard)
-3.  Xem qua các [ví dụ](https://gitlab.com/deltarena/hsgs-hackathon-18/tree/master/examples)
+3.  Xem qua các [ví dụ](https://gitlab.com/deltarena/hsgs-hackathon-18/tree/master/example)
 4.  Nhận bài
 5.  Fork repo này
 6.  ???
-7.  Profit!
+7.  💰
 
 ## Thử nghiệm code của bạn
 
