@@ -2,25 +2,44 @@ import React from "react";
 import s01 from "./lib/S01.js";
 import "./index.less";
 
+class Original extends React.Component {
+  render() {
+    if (parseInt(this.props.ovalue) != this.props.ovalue && parseInt(this.props.nvalue) == this.props.nvalue) {
+      return (
+        <span className={"original"}>{this.props.ovalue}</span>
+      );
+    }
+    return (
+      <span></span>
+    );
+  }
+}
+
 class Column extends React.Component {
   render() {
     let array = [];
     for (let i = 0; i <= this.props.N; ++i) {
       if (this.props.glow[i] == 1) {
         // this cell is glowing
-        array.push(<td className={"glow"}>{this.props.col[i]}</td>);
+        array.push(
+          <td className={"glow"}>{this.props.col[i]}
+          <br/><Original ovalue={this.props.board[i]} nvalue={this.props.col[i]}/>
+          </td>
+        );
         continue;
       }
       if (i < this.props.N)
         array.push(
           <td className={this.props.type == 0 ? "" : "lastCol"}>
             {this.props.col[i]}
+            <br/><Original ovalue={this.props.board[i]} nvalue={this.props.col[i]}/>
           </td>
         );
       else
         array.push(
           <td className={this.props.type == 0 ? "lastRow" : "lastRow lastCol"}>
             {this.props.col[i]}
+            <br/><Original ovalue={this.props.board[i]} nvalue={this.props.col[i]}/>
           </td>
         );
     }
@@ -148,6 +167,7 @@ class Board extends React.Component {
           glow={this.props.state.glow[i]}
           type={i < N ? 0 : 1}
           N={N}
+          board={this.props.state.board[i]}
         />
       );
     }
