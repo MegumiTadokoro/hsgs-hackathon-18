@@ -1,7 +1,7 @@
 import React from "react";
 import Grad from "./lib/grad.js";
 
-import "./index.css";
+import "./index.less";
 
 function Square(props) {
   return (
@@ -63,7 +63,7 @@ class Board extends React.Component {
     if (err !== null) error.push(JSON.stringify(err));
 
     return (
-      <div>
+      <div className="s15">
         <div>{array}</div>
         <br />
         <br />

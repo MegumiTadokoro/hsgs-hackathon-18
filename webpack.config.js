@@ -11,16 +11,31 @@ module.exports = (baseConfig, env, defaultConfig) => {
         v.use.some(
           item =>
             typeof item === "string" &&
-            item.endsWith("node_modules/style-loader/index.js")
+            item.endsWith(path.join("node_modules", "style-loader", "index.js"))
         )
     )
     .use.find(
       v =>
         typeof v.loader === "string" &&
-        v.loader.endsWith("node_modules/css-loader/index.js")
+        v.loader.endsWith(path.join("node_modules", "css-loader", "index.js"))
     );
-  cssRule.options.modeules = true;
-  console.log("Patched CSS Loader to use import modules");
+  // cssRule.options.modules = true;
+  // console.log("Patched CSS Loader to use import modules");
+  defaultConfig.module.rules.push({
+    test: /\.less$/,
+    use: [
+      {
+        loader: "style-loader" // creates style nodes from JS strings
+      },
+      {
+        loader: "css-loader" // translates CSS into CommonJS
+      },
+      {
+        loader: "less-loader" // compiles Less to CSS
+      }
+    ]
+  });
+  console.log("Injected LESS Loader");
 
   return defaultConfig;
 };
