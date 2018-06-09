@@ -40,7 +40,6 @@ class Board extends React.Component {
         );
       array.push(<div>{subarray}</div>);
     }
-    // Dictionary
     let dictionary = [];
     console.log(isEnding);
     if (isEnding !== "won" && isEnding !== "lose") {
