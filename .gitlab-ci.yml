@@ -1,5 +1,6 @@
 hekoru:
-  only: master@deltarena/hsgs-hackathon-18
+  only: 
+  - master@deltarena/hsgs-hackathon-18
   stage: deploy
   image: ruby:latest
   script:
