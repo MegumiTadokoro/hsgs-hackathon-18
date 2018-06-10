@@ -9,7 +9,7 @@ function Square(props) {
   return (
     <button
       key={id++}
-      className={"square" + (props.value === 11 ? " blocked" : " empty")}
+      className={"square" + (props.value === 11 ? " blocked" : (props.value < 0 ? " unclick" : ""))}
       onClick={props.onClick}
       disabled={(props.value === 11 || props.value < 0) || (props.isEnding === "won")}
     >

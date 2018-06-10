@@ -22,6 +22,10 @@ button[disabled]{
     background: black;
 }
 
+.unclick {
+    background: lightgray;
+}
+
 .note{
     font: 25px "Century Gothic", Futura, sans-serif;
     line-height: 30px;

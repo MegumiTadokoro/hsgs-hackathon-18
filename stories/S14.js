@@ -7,7 +7,7 @@ import ReactGame from "react-gameboard/lib/component";
 
 const WordPuzzle = ReactGame(Game);
 
-storiesOf("Word Puzzle", module)
+storiesOf("Word Puzzle (S14)", module)
   .addDecorator(withKnobs)
   .add("Div 3 mode", () => (
     <WordPuzzle height={8} width={8}>
