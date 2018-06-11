@@ -3,13 +3,10 @@ import WordPuzzle from "./lib/S14.js";
 
 import "./index.css";
 
-var id = 0;
-
 function Square(props) {
   return (
     <button
-      key={id++}
-      className={"square" + (props.value === 11 ? " blocked" : " empty")}
+      className={"square" + (props.value === 11 ? " blocked" : (props.value < 0 ? " unclick" : ""))}
       onClick={props.onClick}
       disabled={(props.value === 11 || props.value < 0) || (props.isEnding === "won")}
     >
@@ -20,6 +17,8 @@ function Square(props) {
 
 class Board extends React.Component {
   render() {
+    let space = [];
+    for(let i = 0; i < 5; i++) space.push(<br key = {"br" + i} />);
     const err = this.props.error ? this.props.error.message : null;
     let array = [];
 
@@ -34,40 +33,57 @@ class Board extends React.Component {
       for (let j = 0; j < width; j++)
         subarray.push(
           <Square
-            value={Piles[i][j]} isEnding={isEnding}
+            key={"data" + i + "-" + j}
+            value={Piles[i][j]} isEnding={isEnding} x = {i} y = {j}
             onClick={() => this.props.move({ x: i, y: j })}
           />
         );
-      array.push(<div>{subarray}</div>);
+      array.push(<div className = "newline" key = {"line" + i}>{subarray}</div>);
     }
-    let dictionary = [];
-    console.log(isEnding);
-    if (isEnding !== "won" && isEnding !== "lose") {
-      dictionary.push(<div>Words haven't been found</div>);
+    /*console.log(isEnding);
+    console.log("Print out dictionary");
+    Dict.forEach(function (value) {
+      console.log(value);
+    });*/
+    let dictionary = [], cnt = 1;
+    if (isEnding !== "won") {
+      dictionary.push(<div className = "note" key = {"not_won"}>Những số còn đang đợi bạn...</div>);
       Dict.forEach(function (value) {
-        dictionary.push(<div>{value}</div>);
+        dictionary.push(<span className ="note" key = {"word" + cnt}>{value + "; "}</span>);
+        cnt++;
       });
-    }
-    else if (isEnding === "won") {
-      dictionary.push(
-        <div>
-          <p className={"note " + "mid1"}>{(isEnding === "won" ? "Congratulations, you have" : "")}</p>
-          <p className={"note " + "mid2"}>{(isEnding === "won" ? "found all the numbers!" : "")}</p>
-        </div>
-      );
     }
     else {
       dictionary.push(
-        <div>
-          <h1 className={"note " + "mid1"}>{(isEnding === "won" ? "Sadly, you still have" : "")}</h1>
-          <h1 className={"note " + "mid2"}>{(isEnding === "won" ? "word to find!" : "")}</h1>
+        <div key = {"WON"}>
+          <p className="note">{(isEnding === "won" ? "Wow, bạn tìm được hết tất cả các số rồi! <3" : "")}</p>
         </div>
       );
     }
+
+    var tot = this.props.state.tot, progress, w;
+    if(tot === 0) progress = 100;
+    else progress = 100*(tot-cnt)/tot;
+    w = progress/5;
+
+    /*
+        <div className="meter">
+          <span style={{width: (w), }}>{progress.toFixed(2) + '%'}</span>
+        </div>
+    */
+
     return (
       <div>
-        <table><tbody>{array}</tbody></table>
+        <span className = "note">Bạn có phải là <b style={{font:"bold"}}>
+          T<span style={{color: "#ff0000"}}>ourist</span>
+        </b>?</span>
+        <label className="btn" onClick = {() => this.props.reset()}> Reset </label>
+        <br/>
+        <br/>
+        <br/>
+        <div>{array}</div>
         {dictionary}
+        <h1 className = "footer">Made by Megumi Tadokoro, tested by Nguyen Tuan Dung</h1>
       </div>
     );
   }
