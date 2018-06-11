@@ -73,8 +73,7 @@ class Board extends React.Component {
         </b>?</span>
         <label className="btn" onClick = {() => this.props.reset()}> Reset </label>
         <label
-          className="btn"
-          htmlFor="modal-1"
+          className="btn" for="modal-1"
         >
         How To Play?
         </label>
