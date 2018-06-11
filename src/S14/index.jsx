@@ -68,8 +68,8 @@ class Board extends React.Component {
       <div>
         <h1 className = "note">Bạn có phải là <b style={{font:"bold"}}>
           T<span style={{color: "#ff0000"}}>ourist</span>
-        </b>? </h1>
-        <button key = {"reset"} onClick = {() => this.props.reset()}> Reset </button>
+        </b>? <button key = {"reset"} className={"btn"} onClick = {() => this.props.reset()}> Reset </button>
+        </h1>
         <div>{array}</div>
         <div className="meter">
           <span style={{width: (w), }}>{progress.toFixed(2) + '%'}</span>

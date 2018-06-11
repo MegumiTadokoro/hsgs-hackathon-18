@@ -13,6 +13,20 @@
     outline: none;
 }
 
+.btn {
+    font: 15px "Century Gothic", Futura, sans-serif;
+    text-align: center;
+    border: 1px solid lightblue;
+    outline: none;
+    cursor: pointer;
+    background: rgb(93, 194, 228);
+    padding: 0.5em 1em;
+    color: #fff;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+  }
+
 button:disabled,
 button[disabled]{
   color: black;
