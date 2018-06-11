@@ -358,11 +358,9 @@ const WordPuzzle = {
     //Make sure that all "pile" are array
     const piles = state.Piles;
     if (not(piles instanceof Array)) return false;
-    if (piles.length !== state.width) return false;
-    const Piles = [];
+    if (piles.length !== state.height) return false;
     for (const pile of piles) {
-      if (not(pile instanceof Array)) return false;
-      Piles.push(pile);
+      if (not(pile instanceof Array) || pile.length !== state.width) return false;
     }
     return true;
   },
