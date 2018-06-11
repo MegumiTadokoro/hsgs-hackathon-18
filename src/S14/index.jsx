@@ -66,25 +66,24 @@ class Board extends React.Component {
     else progress = 100*(tot-cnt)/tot;
     w = progress/5;
 
+    /*
+        <div className="meter">
+          <span style={{width: (w), }}>{progress.toFixed(2) + '%'}</span>
+        </div>
+    */
+
     return (
       <div>
         <span className = "note">Bạn có phải là <b style={{font:"bold"}}>
           T<span style={{color: "#ff0000"}}>ourist</span>
         </b>?</span>
         <label className="btn" onClick = {() => this.props.reset()}> Reset </label>
-        <label
-          className="btn" for="modal-1"
-        >
-        How To Play?
-        </label>
         <br/>
         <br/>
         <br/>
         <div>{array}</div>
-        <div className="meter">
-          <span style={{width: (w), }}>{progress.toFixed(2) + '%'}</span>
-        </div>
         {dictionary}
+        <h1 className = "footer">Made by Megumi Tadokoro, tested by Nguyen Tuan Dung</h1>
       </div>
     );
   }
