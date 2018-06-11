@@ -17,6 +17,8 @@ function Square(props) {
 
 class Board extends React.Component {
   render() {
+    let space = [];
+    for(let i = 0; i < 5; i++) space.push(<br key = {"br" + i} />);
     const err = this.props.error ? this.props.error.message : null;
     let array = [];
 
@@ -66,10 +68,19 @@ class Board extends React.Component {
 
     return (
       <div>
-        <h1 className = "note">Bạn có phải là <b style={{font:"bold"}}>
+        <span className = "note">Bạn có phải là <b style={{font:"bold"}}>
           T<span style={{color: "#ff0000"}}>ourist</span>
-        </b>? <button key = {"reset"} className={"btn"} onClick = {() => this.props.reset()}> Reset </button>
-        </h1>
+        </b>?</span>
+        <label className="btn" onClick = {() => this.props.reset()}> Reset </label>
+        <label
+          className="btn"
+          htmlFor="modal-1"
+        >
+        How To Play?
+        </label>
+        <br/>
+        <br/>
+        <br/>
         <div>{array}</div>
         <div className="meter">
           <span style={{width: (w), }}>{progress.toFixed(2) + '%'}</span>

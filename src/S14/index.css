@@ -25,6 +25,7 @@
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     border-radius: 8px;
+    margin-left: 10px;
   }
 
 button:disabled,
@@ -52,6 +53,7 @@ button[disabled]{
     content:"";
     display:table;
     clear:both;
+    margin-left: 20px;
 }
 
 .meter { 
