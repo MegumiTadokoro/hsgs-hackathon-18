@@ -36,8 +36,8 @@ storiesOf("Word Puzzle (S14)", module)
       min: 2,
       max: 100
     };
-    const input_n = number("Row", 10, options);
-    const input_m = number("Column", 10, options);
+    const input_n = number("Số hàng", 10, options);
+    const input_m = number("Số cột", 10, options);
     const n = input_n > 1 ? input_n : 10;
     const m = input_m > 1 ? input_m : 10;
     return (

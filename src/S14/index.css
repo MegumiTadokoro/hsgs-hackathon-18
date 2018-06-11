@@ -58,4 +58,8 @@ button[disabled]{
     position: relative;
     overflow: hidden;
     text-align: center;
-  }
+}
+
+.newline {
+    display: table;
+}

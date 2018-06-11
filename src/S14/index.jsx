@@ -3,12 +3,9 @@ import WordPuzzle from "./lib/S14.js";
 
 import "./index.css";
 
-var id = 0;
-
 function Square(props) {
   return (
     <button
-      key={id++}
       className={"square" + (props.value === 11 ? " blocked" : (props.value < 0 ? " unclick" : ""))}
       onClick={props.onClick}
       disabled={(props.value === 11 || props.value < 0) || (props.isEnding === "won")}
@@ -34,29 +31,29 @@ class Board extends React.Component {
       for (let j = 0; j < width; j++)
         subarray.push(
           <Square
+            key={"data" + i + "-" + j}
             value={Piles[i][j]} isEnding={isEnding} x = {i} y = {j}
             onClick={() => this.props.move({ x: i, y: j })}
           />
         );
-      array.push(<div>{subarray}</div>);
+      array.push(<div className = "newline" key = {"line" + i}>{subarray}</div>);
     }
-    console.log(isEnding);
+    /*console.log(isEnding);
     console.log("Print out dictionary");
     Dict.forEach(function (value) {
       console.log(value);
-    });
-    let dictionary = [], cnt = 0;
+    });*/
+    let dictionary = [], cnt = 1;
     if (isEnding !== "won") {
-      dictionary.push(<div className = "note">Những số còn đang đợi bạn...</div>);
+      dictionary.push(<div className = "note" key = {"not_won"}>Những số còn đang đợi bạn...</div>);
       Dict.forEach(function (value) {
-        dictionary.push(<span className ="note">{value + " "}</span>);
+        dictionary.push(<span className ="note" key = {"word" + cnt}>{value + "; "}</span>);
         cnt++;
-        if(cnt % 5 === 0) dictionary.push(<br/>);
       });
     }
     else {
       dictionary.push(
-        <div>
+        <div key = {"WON"}>
           <p className="note">{(isEnding === "won" ? "Wow, bạn tìm được hết tất cả các số rồi! <3" : "")}</p>
         </div>
       );
@@ -66,14 +63,14 @@ class Board extends React.Component {
     if(tot === 0) progress = 100;
     else progress = 100*(tot-cnt)/tot;
     w = progress/5;
-    //<div>{tot + " " + cnt + " " + progress}</div>
 
     return (
       <div>
         <h1 className = "note">Bạn có phải là <b style={{font:"bold"}}>
           T<span style={{color: "#ff0000"}}>ourist</span>
         </b>? </h1>
-        <table><tbody>{array}</tbody></table>
+        <button key = {"reset"} onClick = {() => this.props.reset()}> Reset </button>
+        <div>{array}</div>
         <div className="meter">
           <span style={{width: (w), }}>{progress.toFixed(2) + '%'}</span>
         </div>
