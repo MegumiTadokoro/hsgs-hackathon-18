@@ -1,7 +1,7 @@
 import React from "react";
 import WordPuzzle from "./lib/S14.js";
 
-import "./index.css";
+import "./index.less";
 
 function Square(props) {
   return (
@@ -73,7 +73,7 @@ class Board extends React.Component {
     */
 
     return (
-      <div>
+      <div className = "s14">
         <span className = "note">Bạn có phải là <b style={{font:"bold"}}>
           T<span style={{color: "#ff0000"}}>ourist</span>
         </b>?</span>
