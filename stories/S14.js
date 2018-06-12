@@ -11,7 +11,7 @@ storiesOf("Word Puzzle (S14)", module)
   .addDecorator(withKnobs)
   .add("Instruction", () => {
     return (
-      <div className = "note"> 
+      <div className = "s14 note"> 
         <h1> Hướng dẫn chơi game Word Puzzle </h1>
         <u font = "underline"> 1, Cốt truyện </u>
         <p>
