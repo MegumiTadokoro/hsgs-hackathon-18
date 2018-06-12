@@ -28,6 +28,7 @@ class Board extends React.Component {
     const Dict = this.props.state.Dict;
     const isEnding = this.props.isEnding;
 
+    //Create table
     for (let i = 0; i < height; i++) {
       let subarray = [];
       for (let j = 0; j < width; j++)
@@ -45,6 +46,7 @@ class Board extends React.Component {
     Dict.forEach(function (value) {
       console.log(value);
     });*/
+    //Create dictionary
     let dictionary = [], cnt = 1;
     if (isEnding !== "won") {
       dictionary.push(<div className = "note" key = {"not_won"}>Những số còn đang đợi bạn...</div>);
