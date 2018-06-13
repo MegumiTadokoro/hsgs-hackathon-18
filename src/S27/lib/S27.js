@@ -75,7 +75,7 @@ const S27 = {
                         stack.push(-Board[i][j + 1]);
                         j++;
                     }
-                    else {
+                    else if (Board[i][j] === '*') {
                         let onTop = stack.pop();
                         stack.push(onTop * Board[i][j + 1]);
                         j++;
@@ -106,7 +106,7 @@ const S27 = {
                         other_stack.push(-Board[j + 1][i]);
                         j++;
                     }
-                    else {
+                    else if (Board[j][i] === '*') {
                         let num_top = other_stack.pop();
                         other_stack.push(num_top * Board[j + 1][i]);
                         j++;
@@ -201,7 +201,7 @@ const S27 = {
                             stack.push(-board[i][j + 1]);
                             j++;
                         }
-                        else {
+                        else if (board[i][j] === '*') {
                             let onTop = stack.pop();
                             if (board[i][j + 1] === oo) {
                                 ok = false;
@@ -257,7 +257,7 @@ const S27 = {
                             stack.push(-board[j + 1][i]);
                             j++;
                         }
-                        else {
+                        else if (board[j][i] === '*') {
                             let onTop = stack.pop();
                             if (board[j + 1][i] === oo) {
                                 ok = false;
